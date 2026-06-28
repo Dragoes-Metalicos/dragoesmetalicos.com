@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragões Metálicos | Robótica Educacional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#home" class="logo"><img src="Images/logo/logo+santana2.png" alt="Logo" class="logo-img"
+                        onerror="this.style.display='none'">Dragões Metálicos</a>
+                <div class="nav-right">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"
+                        aria-controls="navLinks">
+                        <span class="menu-toggle-bar"></span>
+                        <span class="menu-toggle-bar"></span>
+                        <span class="menu-toggle-bar"></span>
+                    </button>
+                    <ul class="nav-links" id="navLinks">
+                        <li><a href="projects.html" data-en="Projects">Projetos</a></li>
+                        <li><a href="#conquistas" data-en="Achievements">Conquistas</a></li>
+                        <li><a href="sponsors.html" data-en="Sponsors">Patrocinadores</a></li>
+                        <li><a href="gallery.html" data-en="Gallery">Galeria</a></li>
+                        <li><a href="sponsors.html" class="nav-cta" data-en="Become a Sponsor">Seja Patrocinador</a>
+                        </li>
+                    </ul>
+                    <div class="geo-badge" id="geoBadge" title="Experiência adaptada automaticamente para sua região / Experience customized for your region.">
+                        <span class="geo-icon">🌐</span>
+                        <span class="geo-text" id="geoText">Detectando...</span>
+                        <span class="geo-status-dot"></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <picture>
+            <source media="(max-width: 767px)" srcset="Images/Galeria/mobile-equipe_25.jpg">
+            <img src="Images/Galeria/equipe_25.png" alt="Equipe Dragões Metálicos" class="hero-bg-photo">
+        </picture>
+        <div class="hero-bg-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title" data-en="Shaping the future through robotics">
+                    Construindo o futuro através da robótica
+                </h1>
+                <p class="hero-subtitle" data-en="Educational robotics team at Colégio Marista Sant'Ana, Uruguaiana">
+                    Equipe de robótica educacional do Colégio Marista Sant'Ana, Uruguaiana
+                </p>
+                <div class="hero-cta">
+                    <a href="#projetos" class="btn btn-primary" data-en="See our projects">Veja nossos projetos</a>
+                    <a href="sponsors.html" class="btn btn-secondary" data-en="Support us">Apoie-nos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 data-en="Who we are">Quem somos</h2>
+                    <p
+                        data-en="Dragões Metálicos is an educational robotics team dedicated to developing innovative technological solutions. We combine engineering, programming, and creativity to create projects that impact our community and prepare us for the future.">
+                        Dragões Metálicos é uma equipe de robótica educacional dedicada ao desenvolvimento de soluções
+                        tecnológicas inovadoras. Combinamos engenharia, programação e criatividade para criar projetos
+                        que impactam nossa comunidade e nos preparam para o futuro.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2024</div>
+                        <div class="stat-label" data-en="Year founded">Ano de fundação</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">7</div>
+                        <div class="stat-label" data-en="Active members">Membros ativos</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label" data-en="Active projects">Projetos totais</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section class="projects" id="projetos">
+        <div class="container">
+            <div class="section-header section-header--with-link">
+                <div>
+                    <h2 class="section-title" data-en="Our Projects">Nossos Projetos</h2>
+                    <p class="section-description"
+                        data-en="Robots and automated systems we've developed to solve real challenges.">
+                        Robôs e sistemas automatizados que desenvolvemos para resolver desafios reais.
+                    </p>
+                </div>
+                <a href="projects.html" class="section-see-all" data-en="See all →">Ver todos →</a>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <article class="project-card">
+                    <div class="project-images">
+                        <img src="Images/Galeria/robot_fmr1.png" alt="Visão frontal do robô FMR2025"
+                            class="project-image" style="object-fit: cover; width: 100%;">
+                        <img src="Images/Galeria/robot_fmr2.png" alt="Detalhe mecânico do robô FMR2025"
+                            class="project-image" style="object-fit: cover; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-year">2025</span>
+                            <span class="project-tag">FMR 2025</span>
+                        </div>
+                        <h3 class="project-title" data-en="Official FMR2025 Robot">Robô oficial FMR2025</h3>
+                        <p class="project-description"
+                            data-en="Competition robot designed with modularity in mind. Built to easily swap components during missions, allowing quick adaptations to different challenges throughout the championship.">
+                            Robô de competição projetado com foco em modularidade. Criado para trocar componentes
+                            facilmente durante as missões, permitindo adaptações rápidas aos diferentes desafios do
+                            campeonato.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card">
+                    <div class="project-images">
+                        <img src="Images/Galeria/robot-f1_1.png" alt="Robô de Corrida F1 na pista" class="project-image"
+                            style="object-fit: cover; width: 100%;">
+                        <img src="Images/Galeria/robot-f1_2.png" alt="Robô de Corrida F1 em exposição"
+                            class="project-image" style="object-fit: cover; width: 100%;">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta">
+                            <span class="project-year">2026</span>
+                            <span class="project-tag" data-en="In development">Em desenvolvimento</span>
+                        </div>
+                        <h3 class="project-title" data-en="Race Robot">Robô de Corrida</h3>
+                        <p class="project-description"
+                            data-en="Race robot that will be showcased at the June festival. Two robots battle to complete the course in the shortest time possible, combining strategy and mechanical engineering.">
+                            Robô de corrida que será apresentado na festa junina. Dois robôs controlados por controles
+                            de videogame correm para completar o percurso no menor tempo possível, combinando estratégia
+                            e engenharia mecânica.
+                        </p>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CONTRIBUTE CTA -->
+    <section class="contribute-cta-section">
+        <div class="container">
+            <div class="donors-cta">
+                <p data-en="Want to contribute to our projects?">Quer contribuir para nossos projetos?</p>
+                <a href="sponsors.html" class="btn btn-primary" data-en="Support our team">Apoie nossa equipe</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="achievements" id="conquistas">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Achievements">Conquistas</h2>
+                <p class="section-description" data-en="Recognition we've earned through dedication and teamwork.">
+                    Reconhecimentos que conquistamos através de dedicação e trabalho em equipe.
+                </p>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                        <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                        <path d="M4 22h16"></path>
+                        <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                        <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                        <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                    </svg>
+                </div>
+                <div class="achievement-content">
+                    <h3 class="achievement-title" data-en="Advanced Engineering Award">Prêmio de Engenharia Avançado
+                    </h3>
+                    <p class="achievement-subtitle">Festival Marista de Robótica 2025</p>
+                    <p class="achievement-category" data-en="Educational Robotics - Advanced Category">Robótica
+                        Educacional - Categoria Avançado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPONSORS -->
+    <section class="sponsors" id="patrocinadores">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Our Sponsors">Nossos Patrocinadores</h2>
+                <p class="section-description"
+                    data-en="Companies and institutions that believe in our mission and make our projects possible.">
+                    Empresas e instituições que acreditam em nossa missão e tornam nossos projetos possíveis.
+                </p>
+            </div>
+
+            <div class="sponsors-flat-grid" id="sponsorsGrid">
+                <!--
+              COMO ADICIONAR UM PATROCINADOR:
+              Substitua um bloco .sponsor-placeholder-card por:
+
+              <a href="https://sitedompatrocinador.com" target="_blank" rel="noopener" class="sponsor-card">
+                <img src="caminho/logo.png" alt="Nome do Patrocinador" class="sponsor-logo">
+                <span class="sponsor-name">Nome da Empresa</span>
+              </a>
+            -->
+                <a href="sponsors.html" class="sponsor-placeholder-card">
+                    <span class="sponsor-plus">+</span>
+                    <span>Seja o primeiro patrocinador</span>
+                </a>
+                <a href="sponsors.html" class="sponsor-placeholder-card">
+                    <span class="sponsor-plus">+</span>
+                    <span>Sua empresa aqui</span>
+                </a>
+                <a href="sponsors.html" class="sponsor-placeholder-card">
+                    <span class="sponsor-plus">+</span>
+                    <span>Sua empresa aqui</span>
+                </a>
+            </div>
+
+            <div class="sponsors-flat-footer">
+                <a href="sponsors.html" class="sponsors-see-all" data-en="See all sponsors →">Ver página de
+                    patrocinadores →</a>
+                <a href="sponsors.html" class="btn btn-secondary"
+                    style="font-size:0.875rem; padding:0.6rem 1.25rem; width:auto;" data-en="Become a sponsor">Quero
+                    patrocinar</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3 class="footer-title">Dragões Metálicos</h3>
+                    <p
+                        data-en="Educational robotics team from Colégio Marista Sant'Ana, building the future through innovation and teamwork.">
+                        Equipe de robótica educacional do Colégio Marista Sant'Ana, construindo o futuro através da
+                        inovação e trabalho em equipe.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4 data-en="Quick Links">Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#projetos" data-en="Projects">Projetos</a></li>
+                        <li><a href="#conquistas" data-en="Achievements">Conquistas</a></li>
+                        <li><a href="sponsors.html" data-en="Sponsors">Patrocinadores</a></li>
+                        <li><a href="gallery.html" data-en="Gallery">Galeria</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 data-en="Contact">Contato</h4>
+                    <ul>
+                        <li><a href="mailto:contato@dragoesmetalicos.com">contato@dragoesmetalicos.com</a></li>
+                        <li><a href="https://www.instagram.com/roboticasantana/" target="_blank"
+                                rel="noopener noreferrer" data-en="Instagram">Instagram</a></li>
+                        <li><a href="https://github.com/Dragoes-Metalicos" target="_blank" rel="noopener noreferrer"
+                                data-en="GitHub">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-en="© 2026 Dragões Metálicos. All rights reserved.">© 2026 Dragões Metálicos. Todos os direitos
+                    reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

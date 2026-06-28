@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Robô FMR 2026 | Dragões Metálicos</title>
+  <meta name="description" content="Detalhes do projeto do Robô FMR 2026 dos Dragões Metálicos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    .nav-active { color: var(--color-primary) !important; }
+    .project-hero { margin-top: 80px; padding: var(--spacing-xl) 0 var(--spacing-lg); border-bottom: 1px solid var(--color-border); }
+    .breadcrumb { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: var(--spacing-md); }
+    .breadcrumb a { color: var(--color-text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--color-primary); }
+    .breadcrumb span { margin: 0 0.4rem; }
+    .project-hero h1 { font-size: clamp(2rem, 4vw, 3.4rem); margin-bottom: var(--spacing-sm); }
+    .project-hero-desc { font-size: 1.05rem; opacity: 0.8; max-width: 720px; margin-bottom: var(--spacing-lg); }
+    .project-hero-stats { display: flex; gap: var(--spacing-lg); flex-wrap: wrap; }
+    .project-stat { text-align: left; }
+    .project-stat-number { font-family: var(--font-display); font-size: 2.4rem; font-weight: 700; color: var(--color-primary); line-height: 1; }
+    .project-stat-label { font-size: 0.85rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-top: 0.4rem; }
+    .project-detail-layout { display: grid; grid-template-columns: 1.7fr 1fr; gap: calc(var(--spacing-xl) + 0.5rem); align-items: start; margin-top: var(--spacing-xl); }
+    .project-main { display: grid; gap: var(--spacing-lg); }
+    .project-images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .project-images img { width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; min-height: 180px; max-height: 260px; object-fit: cover; background: transparent; border-radius: var(--radius); display: block; cursor: pointer; transition: transform 0.2s, opacity 0.2s; }
+    .project-images img:hover { opacity: 0.95; transform: scale(1.01); }
+    /* Image lightbox modal */
+    .image-modal { display: flex; position: fixed; inset: 0; background: rgba(8, 10, 18, 0.6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 9999; align-items: center; justify-content: center; padding: 1.25rem; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 180ms ease, visibility 180ms ease; }
+    .image-modal.active { opacity: 1; visibility: visible; pointer-events: auto; }
+    .image-modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.24); color: white; font-size: 1.9rem; cursor: pointer; z-index: 10001; line-height: 1; padding: 0.75rem 0.9rem; border-radius: 999px; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    .image-modal-close:hover { background: rgba(255,255,255,0.24); color: var(--color-primary); }
+    .image-modal-content { position: relative; max-width: min(90vw, 1120px); max-height: min(88vh, 860px); width: 100%; display: flex; align-items: center; justify-content: center; padding: 1rem; box-shadow: 0 32px 80px rgba(0,0,0,0.35); background: rgba(255,255,255,0.04); border-radius: 24px; overflow: hidden; }
+    .image-modal-img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; border-radius: 20px; box-shadow: 0 24px 60px rgba(0,0,0,0.28); }
+    .image-modal-nav { position: absolute; top: 50%; left: 1.25rem; right: 1.25rem; transform: translateY(-50%); display: flex; justify-content: space-between; width: auto; pointer-events: none; }
+    .image-modal-nav button { pointer-events: auto; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.28); color: white; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: background 0.2s, transform 0.2s; }
+    .image-modal-nav button:hover { background: rgba(255,255,255,0.26); transform: scale(1.06); color: var(--color-primary); }
+    .image-modal-nav button.prev { margin-left: 0; }
+    .image-modal-nav button.next { margin-right: 0; }
+    .project-overview { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--spacing-lg); }
+    .project-overview h2 { margin-bottom: var(--spacing-sm); }
+    .project-overview p { opacity: 0.9; line-height: 1.8; }
+    .project-details-panel { display: grid; gap: var(--spacing-lg); }
+    .project-details-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--spacing-lg); }
+    .project-details-card h2 { margin-bottom: var(--spacing-sm); }
+    .project-specs { display: grid; grid-template-columns: repeat(2, minmax(160px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-md); }
+    .project-spec { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: calc(var(--radius) - 4px); padding: 1rem; }
+    .project-spec-label { font-size: 0.75rem; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.45rem; }
+    .project-spec-value { font-size: 1rem; font-weight: 700; color: var(--color-text); }
+    .project-outcome { display: grid; gap: var(--spacing-md); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--spacing-lg); }
+    .project-outcome h3 { margin-bottom: var(--spacing-sm); }
+    .project-outcome p { opacity: 0.9; line-height: 1.8; }
+    .back-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--color-primary); text-decoration: none; font-weight: 700; margin-top: var(--spacing-lg); margin-bottom: -var(--spacing-lg); }
+    .back-link:hover { color: var(--color-secondary); }
+    @media (max-width: 1100px) { .project-detail-layout { grid-template-columns: 1fr; } }
+    @media (max-width: 760px) {
+      .project-hero { padding-top: var(--spacing-lg); padding: var(--spacing-lg) 0 var(--spacing-md); }
+      .project-hero h1 { font-size: 1.75rem; margin-bottom: var(--spacing-sm); }
+      .project-hero-desc { max-width: 100%; font-size: 1rem; margin-bottom: var(--spacing-md); }
+      .project-hero-stats { gap: var(--spacing-md); flex-wrap: wrap; }
+      .project-stat-number { font-size: 1.8rem; }
+      .project-stat-label { font-size: 0.7rem; }
+      .project-detail-layout { gap: var(--spacing-lg); }
+      .project-images { grid-template-columns: 1fr; gap: 0.75rem; }
+      .project-images img { height: 200px; border-radius: 12px; }
+      .project-overview { padding: var(--spacing-md); border-radius: 12px; }
+      .project-overview h2 { font-size: 1.15rem; }
+      .project-overview p { font-size: 0.95rem; line-height: 1.7; }
+      .project-outcome { padding: var(--spacing-md); border-radius: 12px; }
+      .project-outcome h3 { font-size: 1.15rem; }
+      .project-outcome p { font-size: 0.95rem; line-height: 1.7; }
+      .project-specs { grid-template-columns: 1fr; gap: var(--spacing-sm); margin-top: var(--spacing-sm); }
+      .project-spec { padding: 0.75rem; border-radius: 8px; }
+      .project-spec-label { font-size: 0.7rem; margin-bottom: 0.3rem; }
+      .project-spec-value { font-size: 0.95rem; }
+      .project-details-card { padding: var(--spacing-md); border-radius: 12px; }
+      .project-details-card h2 { font-size: 1.1rem; }
+      .back-link { font-size: 0.95rem; margin-top: var(--spacing-md); }
+    }
+    @media (max-width: 480px) {
+      .breadcrumb { font-size: 0.75rem; margin-bottom: var(--spacing-sm); }
+      .project-hero { padding: var(--spacing-md) 0 var(--spacing-sm); }
+      .project-hero h1 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+      .project-hero-desc { font-size: 0.9rem; margin-bottom: var(--spacing-sm); }
+      .project-hero-stats { gap: var(--spacing-sm); }
+      .project-stat-number { font-size: 1.6rem; }
+      .project-stat-label { font-size: 0.65rem; }
+      .project-detail-layout { gap: var(--spacing-md); }
+      .project-images { gap: 0.5rem; }
+      .project-images img { height: 180px; border-radius: 10px; }
+      .project-overview { padding: var(--spacing-sm); }
+      .project-overview h2 { font-size: 1rem; }
+      .project-overview p { font-size: 0.9rem; }
+      .project-outcome { padding: var(--spacing-sm); }
+      .project-outcome h3 { font-size: 1rem; }
+      .project-outcome p { font-size: 0.9rem; }
+      .project-specs { gap: 0.5rem; }
+      .project-spec { padding: 0.6rem; }
+      .project-spec-value { font-size: 0.9rem; }
+      .project-details-card { padding: var(--spacing-sm); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- PROJECT DETAIL PAGE TEMPLATE -->
+  <!-- Edit the project title, description, stats, images, overview text, specs, and outcome below. -->
+  <!-- To add a new project page, duplicate this file inside ../projects and update all relative paths and content. -->
+
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="../index.html" class="logo"><img src="../Images/logo/logo+santana2.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">Dragões Metálicos</a>
+        <div class="nav-right">
+          <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+            <span class="menu-toggle-bar"></span>
+            <span class="menu-toggle-bar"></span>
+            <span class="menu-toggle-bar"></span>
+          </button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="../projects.html" class="nav-active" data-en="Projects">Projetos</a></li>
+            <li><a href="../index.html#conquistas" data-en="Achievements">Conquistas</a></li>
+            <li><a href="../sponsors.html" data-en="Sponsors">Patrocinadores</a></li>
+            <li><a href="../gallery.html" data-en="Gallery">Galeria</a></li>
+            <li><a href="../sponsors.html" class="nav-cta" data-en="Become a Sponsor">Seja Patrocinador</a></li>
+          </ul>
+          <div class="geo-badge" id="geoBadge" title="Experiência adaptada automaticamente para sua região / Experience customized for your region.">
+            <span class="geo-icon">🌐</span>
+            <span class="geo-text" id="geoText">Detectando...</span>
+            <span class="geo-status-dot"></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <section class="project-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../projects.html">Projetos</a>
+        <span aria-hidden="true">/</span>
+        Robô FMR 2026
+      </nav>
+      <h1>Robô FMR 2026</h1>
+      <p class="project-hero-desc">Criado para conectar a equipe com a comunidade, este robô oferece demonstrações educativas, oficinas e atividades interativas que mostram robótica de forma acessível.</p>
+      <div class="project-hero-stats">
+        <div class="project-stat">
+          <div class="project-stat-number">2025</div>
+          <div class="project-stat-label">Ano do projeto</div>
+        </div>
+        <div class="project-stat">
+          <div class="project-stat-number">Educação</div>
+          <div class="project-stat-label">Foco</div>
+        </div>
+        <div class="project-stat">
+          <div class="project-stat-number">Em uso</div>
+          <div class="project-stat-label">Status</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects-content">
+    <div class="container">
+      <div class="project-detail-layout">
+        <div class="project-main">
+          <div class="project-images">
+            <img src="../Images/Galeria/robot_placeholder2.png" alt="Robô FMR 2026 em oficina escolar">
+            <img src="../Images/Galeria/robot_placeholder1.png" alt="Equipe apresentando o Robô FMR 2026">
+          </div>
+
+          <div class="project-overview">
+            <h2>Visão geral do projeto</h2>
+            <p>O Robô FMR 2026 foi produzido para ser uma experiência prática em eventos educacionais, permitindo que alunos e visitantes vejam ciência e tecnologia em ação, com foco em acessibilidade e interação.</p>
+          </div>
+
+          <div class="project-outcome">
+            <h3>Impacto</h3>
+            <p>Este robô transformou apresentações em experiências memoráveis, ajudando a equipe a transmitir conceitos de robótica e engenharia para diferentes idades. Ele fortaleceu nossa presença comunitária e inspirou novos talentos.</p>
+          </div>
+        </div>
+
+        <aside class="project-details-panel">
+          <div class="project-details-card">
+            <h2>Detalhes rápidos</h2>
+            <p>Use esta seção para resumir os dados principais do projeto de forma objetiva.</p>
+            <div class="project-specs">
+              <div class="project-spec">
+                <div class="project-spec-label">Controle</div>
+                <div class="project-spec-value">Manual / Interativo</div>
+              </div>
+              <div class="project-spec">
+                <div class="project-spec-label">Uso</div>
+                <div class="project-spec-value">Workshops e eventos comunitários</div>
+              </div>
+              <div class="project-spec">
+                <div class="project-spec-label">Material</div>
+                <div class="project-spec-value">Lego Spike + Arduino</div>
+              </div>
+              <div class="project-spec">
+                <div class="project-spec-label">Data de finalização</div>
+                <div class="project-spec-value">2025</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- To update this project later, edit the title, copy, and image paths in this file and add the page to projects.html. -->
+          <div class="project-details-card">
+            <h2>Informações adicionais</h2>
+            <p>Use esta seção para destacar pontos importantes do projeto, como contexto, público e impacto.</p>
+          </div>
+        </aside>
+      </div>
+
+      <a href="../projects.html" class="back-link">← Voltar para projetos</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3 class="footer-title">Dragões Metálicos</h3>
+          <p data-en="Educational robotics team, building the future through innovation and teamwork.">Equipe de robótica educacional, construindo o futuro através da inovação e trabalho em equipe.</p>
+        </div>
+        <div class="footer-column">
+          <h4 data-en="Quick Links">Links Rápidos</h4>
+          <ul>
+            <li><a href="../projects.html" data-en="Projects">Projetos</a></li>
+            <li><a href="../index.html#conquistas" data-en="Achievements">Conquistas</a></li>
+            <li><a href="../sponsors.html" data-en="Sponsors">Patrocinadores</a></li>
+            <li><a href="../gallery.html" data-en="Gallery">Galeria</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4 data-en="Contact">Contato</h4>
+          <ul>
+            <li><a href="mailto:contato@dragoesmetalicos.com">contato@dragoesmetalicos.com</a></li>
+            <li><a href="https://www.instagram.com/roboticasantana/" target="_blank" rel="noopener noreferrer" data-en="Instagram">Instagram</a></li>
+            <li><a href="https://github.com/Dragoes-Metalicos" target="_blank" rel="noopener noreferrer" data-en="GitHub">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-en="© 2026 Dragões Metálicos. All rights reserved.">© 2026 Dragões Metálicos. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Image Lightbox Modal -->
+  <div class="image-modal" id="imageModal">
+    <button class="image-modal-close" id="closeModal" aria-label="Fechar">×</button>
+    <div class="image-modal-content">
+      <div class="image-modal-nav">
+        <button class="prev" id="prevBtn" aria-label="Imagem anterior">❮</button>
+        <button class="next" id="nextBtn" aria-label="Próxima imagem">❯</button>
+      </div>
+      <img src="" alt="" class="image-modal-img" id="modalImage">
+    </div>
+  </div>
+
+  <script src="../script.js"></script>
+  <script>
+    // Image lightbox functionality
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.getElementById('closeModal');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const projectImages = document.querySelectorAll('.project-images img');
+    let currentImageIndex = 0;
+    const imageArray = Array.from(projectImages);
+
+    projectImages.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        modal.classList.add('active');
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        currentImageIndex = index;
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+
+    prevBtn.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex - 1 + imageArray.length) % imageArray.length;
+      modalImg.src = imageArray[currentImageIndex].src;
+      modalImg.alt = imageArray[currentImageIndex].alt;
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex + 1) % imageArray.length;
+      modalImg.src = imageArray[currentImageIndex].src;
+      modalImg.alt = imageArray[currentImageIndex].alt;
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('active')) return;
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+      if (e.key === 'Escape') closeBtn.click();
+    });
+  </script>
+</body>
+
+</html>
