@@ -9,6 +9,7 @@ let currentLang = 'pt';
 document.addEventListener('DOMContentLoaded', () => {
     initGeographicalDetection();
     initSmoothScroll();
+    initScrollReveal();
     initMobileMenu();
     initFormHandling();
     loadDonors();
@@ -163,6 +164,68 @@ function initSmoothScroll() {
             }
         });
     });
+}
+
+// ================================
+// SCROLL REVEAL ANIMATIONS
+// ================================
+
+function initScrollReveal() {
+    const revealTargets = document.querySelectorAll([
+        '.about',
+        '.projects',
+        '.contribute-cta-section',
+        '.achievements',
+        '.sponsors',
+        '.donors',
+        '.become-sponsor',
+        '.projects-hero',
+        '.projects-content',
+        '.section-header',
+        '.section-header--with-link',
+        '.about-text',
+        '.about-stats',
+        '.stat-item',
+        '.project-card',
+        '.achievement-card',
+        '.tier-section',
+        '.sponsor-placeholder-card',
+        '.sponsor-card',
+        '.donors-cta',
+        '.footer-column',
+        '.sponsor-form-wrapper',
+        '.projects-grid > *',
+        '.sponsors-flat-grid > *',
+        '.footer-grid > *'
+    ].join(', '));
+
+    if (!revealTargets.length) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    revealTargets.forEach((element, index) => {
+        element.classList.add('scroll-reveal');
+        element.style.setProperty('--reveal-delay', `${Math.min(index % 8, 6) * 80}ms`);
+    });
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+        revealTargets.forEach(element => element.classList.add('is-visible'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries, observerInstance) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add('is-visible');
+            observerInstance.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -8% 0px'
+    });
+
+    revealTargets.forEach(element => observer.observe(element));
 }
 
 // ================================

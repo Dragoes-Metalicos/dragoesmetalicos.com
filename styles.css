@@ -46,6 +46,24 @@ body {
     overflow-x: hidden;
 }
 
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(2px);
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+        filter 0.75s ease;
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform, filter;
+}
+
+.scroll-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -707,6 +725,9 @@ p {
     overflow: hidden;
     transition: var(--transition);
     background: var(--color-surface);
+    display: block;
+    color: inherit;
+    text-decoration: none;
 }
 
 .project-card:hover {
@@ -794,7 +815,7 @@ p {
     padding: var(--spacing-md);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    align-items: flex-start;
+    align-items: center;
     max-width: 700px;
     transition: var(--transition);
 }
@@ -806,14 +827,24 @@ p {
 
 .achievement-icon {
     flex-shrink: 0;
-    width: 64px;
-    height: 64px;
+    width: 180px;
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--color-surface-alt);
-    border-radius: var(--radius);
+    border-radius: calc(var(--radius) - 4px);
     color: var(--color-primary);
+    overflow: hidden;
+}
+
+.achievement-trophy {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    padding: 0;
 }
 
 .achievement-content {
@@ -1331,6 +1362,20 @@ p {
 
 .sponsors-see-all:hover {
   text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .scroll-reveal,
+    .scroll-reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
 }
 
 /* ================================
